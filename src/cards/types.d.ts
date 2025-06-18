@@ -33,6 +33,7 @@ export type StatCardOptions = CommonOptions & {
 export type RepoCardOptions = CommonOptions & {
   show_owner: boolean;
   description_lines_count: number;
+  hide_forks: boolean;
 };
 
 export type TopLangOptions = CommonOptions & {

@@ -22,6 +22,7 @@ export type RepositoryData = {
   };
   forkCount: number;
   starCount: number;
+  downloads: number;
 };
 
 export type StatsData = {

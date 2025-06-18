@@ -6,6 +6,7 @@ import {
   parseBoolean,
   renderError,
 } from "../src/common/utils.js";
+import { fetchNpmPackage } from "../src/fetchers/npm-fetcher.js";
 import { fetchRepo } from "../src/fetchers/repo-fetcher.js";
 import { isLocaleAvailable } from "../src/translations.js";
 
@@ -25,6 +26,8 @@ export default async (req, res) => {
     border_radius,
     border_color,
     description_lines_count,
+    npm_package,
+    hide_forks,
   } = req.query;
 
   res.setHeader("Content-Type", "image/svg+xml");
@@ -55,6 +58,12 @@ export default async (req, res) => {
 
   try {
     const repoData = await fetchRepo(username, repo);
+    let downloads = null;
+
+    if (npm_package) {
+      const { downloads: npmDownloads } = await fetchNpmPackage(npm_package);
+      downloads = npmDownloads;
+    }
 
     let cacheSeconds = clampValue(
       parseInt(cache_seconds || CONSTANTS.PIN_CARD_CACHE_SECONDS, 10),
@@ -71,19 +80,26 @@ export default async (req, res) => {
     );
 
     return res.send(
-      renderRepoCard(repoData, {
-        hide_border: parseBoolean(hide_border),
-        title_color,
-        icon_color,
-        text_color,
-        bg_color,
-        theme,
-        border_radius,
-        border_color,
-        show_owner: parseBoolean(show_owner),
-        locale: locale ? locale.toLowerCase() : null,
-        description_lines_count,
-      }),
+      renderRepoCard(
+        {
+          ...repoData,
+          downloads,
+        },
+        {
+          hide_border: parseBoolean(hide_border),
+          title_color,
+          icon_color,
+          text_color,
+          bg_color,
+          theme,
+          border_radius,
+          border_color,
+          show_owner: parseBoolean(show_owner),
+          locale: locale ? locale.toLowerCase() : null,
+          description_lines_count,
+          hide_forks: parseBoolean(hide_forks),
+        },
+      ),
     );
   } catch (err) {
     res.setHeader(
