@@ -15,7 +15,15 @@ app.listen(process.env.port || 9000, () => {
   }
 });
 
-app.use(express.static("public"));
+app.use(
+  express.static("public", {
+    setHeaders: (res, path) => {
+      if (path.endsWith(".svg")) {
+        res.setHeader("Content-Type", "image/svg+xml");
+      }
+    },
+  }),
+);
 
 app.get("/", statsCard);
 app.get("/pin", repoCard);
