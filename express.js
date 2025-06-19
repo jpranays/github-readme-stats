@@ -31,7 +31,8 @@ app.get("/top-langs", langCard);
 app.get("/wakatime", wakatimeCard);
 app.get("/gist", gistCard);
 app.get("/render-html", (req, res) => {
-  return res.write(`
+  res.write(
+    `
     <div>
     <style>
     div{
@@ -47,5 +48,7 @@ app.get("/render-html", (req, res) => {
     </style>
     <div>Hello World</div>
     </div>
-    `);
+    `,
+  );
+  return res.end();
 });
