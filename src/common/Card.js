@@ -270,10 +270,13 @@ class Card {
         />
 
   <image 
-    href="https://raw.githubusercontent.com/jpranays/cli-gh/HEAD/docs/static/gifs/GITHUB-CLI-INTO-DARK.gif" 
-    width="100%" 
-    height="100%"
-    class="card-image"
+    href="https://jpranays.github.io/react-fast-hooks/assets/images/bg-2235fab0016a05d9e3eb5232d9613867.svg" 
+              data-testid="card-bg"
+          x="0.5"
+          y="0.5"
+          rx="${this.border_radius}"
+          height="99%"
+          width="${this.width - 1}"
   />
 
         ${this.hideTitle ? "" : this.renderTitle()}
