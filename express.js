@@ -5,6 +5,7 @@ import langCard from "./api/top-langs.js";
 import wakatimeCard from "./api/wakatime.js";
 import gistCard from "./api/gist.js";
 import express from "express";
+import renderHtml from "./api/render-html.js";
 
 const app = express();
 app.listen(process.env.port || 9000, () => {
@@ -30,25 +31,4 @@ app.get("/pin", repoCard);
 app.get("/top-langs", langCard);
 app.get("/wakatime", wakatimeCard);
 app.get("/gist", gistCard);
-app.get("/render-html", (req, res) => {
-  res.write(
-    `
-    <div>
-    <style>
-    div{
-    animation:bounce 2s infinite;
-    height: 100px;
-    width: 100px;
-    background-color: #4CAF50;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-    </style>
-    <div>Hello World</div>
-    </div>
-    `,
-  );
-  return res.end();
-});
+app.get("/render-html", renderHtml);
