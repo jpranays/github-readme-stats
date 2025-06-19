@@ -74,10 +74,10 @@ export default async (req, res) => {
       ? parseInt(process.env.CACHE_SECONDS, 10) || cacheSeconds
       : cacheSeconds;
 
-    // res.setHeader(
-    //   "Cache-Control",
-    //   `max-age=${cacheSeconds}, s-maxage=${cacheSeconds}`,
-    // );
+    res.setHeader(
+      "Cache-Control",
+      `max-age=${cacheSeconds}, s-maxage=${cacheSeconds}`,
+    );
 
     return res.send(
       renderRepoCard(
