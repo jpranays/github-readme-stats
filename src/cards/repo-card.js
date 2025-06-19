@@ -181,6 +181,7 @@ const renderRepoCard = (repo, options = {}) => {
     height,
     border_radius,
     colors,
+    repoName: name,
   });
 
   card.disableAnimations();

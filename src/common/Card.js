@@ -17,6 +17,7 @@ class Card {
    * @param {string} args.colors.iconColor Card icon color.
    * @param {string|Array} args.colors.bgColor Card background color.
    * @param {string} args.colors.borderColor Card border color.
+   * @param {string} args.repoName Repository name for the card.
    * @returns {Card} Card instance.
    */
   constructor({
@@ -27,6 +28,7 @@ class Card {
     customTitle,
     defaultTitle = "",
     titlePrefixIcon,
+    repoName = "",
   }) {
     this.width = width;
     this.height = height;
@@ -51,6 +53,7 @@ class Card {
     this.animations = true;
     this.a11yTitle = "";
     this.a11yDesc = "";
+    this.repoName = repoName;
   }
 
   /**
@@ -234,21 +237,6 @@ class Card {
               ? `* { animation-duration: 0s !important; animation-delay: 0s !important; }`
               : ""
           }
-              .card-image{
-            width: 100%;
-            height: 100%;
-            animation: scaleInAnimation 0.8s ease-in-out forwards;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-
-            object-fit: cover;
-            border-radius: ${this.border_radius}px;
-
-              }
         </style>
 
         ${this.renderGradient()}
@@ -269,7 +257,9 @@ class Card {
           stroke-opacity="${this.hideBorder ? 0 : 1}"
         />
 
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid"
+       ${
+         this.repoName === "react-fast-hooks"
+           ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid"
     style="opacity:0.3"
     data-testid="card-bg"
           x="0.5"
@@ -514,7 +504,9 @@ class Card {
         </path>
         <g data-idx="92"></g>
     </g>
-</svg>
+</svg>`
+           : null
+       }
 
         ${this.hideTitle ? "" : this.renderTitle()}
 
