@@ -269,7 +269,7 @@ class Card {
           stroke-opacity="${this.hideBorder ? 0 : 1}"
         />
 
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 754" preserveAspectRatio="xMidYMid"
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid"
     style="opacity:0.3"
     data-testid="card-bg"
           x="0.5"
