@@ -234,6 +234,21 @@ class Card {
               ? `* { animation-duration: 0s !important; animation-delay: 0s !important; }`
               : ""
           }
+              .card-image{
+            width: 100%;
+            height: 100%;
+            animation: scaleInAnimation 0.8s ease-in-out forwards;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+
+            object-fit: cover;
+            border-radius: ${this.border_radius}px;
+
+              }
         </style>
 
         ${this.renderGradient()}
@@ -253,6 +268,13 @@ class Card {
           }"
           stroke-opacity="${this.hideBorder ? 0 : 1}"
         />
+
+  <image 
+    href="https://raw.githubusercontent.com/jpranays/cli-gh/HEAD/docs/static/gifs/GITHUB-CLI-INTO-DARK.gif" 
+    width="100%" 
+    height="100%"
+    class="card-image"
+  />
 
         ${this.hideTitle ? "" : this.renderTitle()}
 
