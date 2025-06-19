@@ -15,6 +15,8 @@ app.listen(process.env.port || 9000, () => {
   }
 });
 
+app.use(express.static("public"));
+
 app.get("/", statsCard);
 app.get("/pin", repoCard);
 app.get("/top-langs", langCard);

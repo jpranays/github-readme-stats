@@ -270,7 +270,7 @@ class Card {
         />
 
   <image 
-    href="https://jpranays.github.io/react-fast-hooks/assets/images/bg-2235fab0016a05d9e3eb5232d9613867.svg" 
+    href="/react-fast-hooks.svg" 
               data-testid="card-bg"
           x="0.5"
           y="0.5"
