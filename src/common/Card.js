@@ -505,8 +505,10 @@ class Card {
         <g data-idx="92"></g>
     </g>
 </svg>`
-           : null
+           : ""
        }
+
+       ${this.repoName === "cli-gh" ? "Hello" : ""}
 
         ${this.hideTitle ? "" : this.renderTitle()}
 
