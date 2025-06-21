@@ -109,7 +109,7 @@ const getProgressAnimation = ({ progress }) => {
         stroke-dashoffset: ${calculateCircleProgress(0)};
       }
       to {
-        stroke-dashoffset: ${calculateCircleProgress(progress)};
+        stroke-dashoffset: ${calculateCircleProgress(100)};
       }
     }
   `;

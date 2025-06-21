@@ -44,7 +44,7 @@ const rankIcon = (rankIcon, rankLevel, percentile) => {
     default:
       return `
         <text x="-5" y="3" alignment-baseline="central" dominant-baseline="central" text-anchor="middle" data-testid="level-rank-icon">
-          ${rankLevel}
+          A
         </text>
       `;
   }
