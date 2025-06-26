@@ -5,7 +5,6 @@ import langCard from "./api/top-langs.js";
 import wakatimeCard from "./api/wakatime.js";
 import gistCard from "./api/gist.js";
 import express from "express";
-import renderHtml from "./api/render-html.js";
 
 const app = express();
 app.listen(process.env.port || 9000, () => {
@@ -16,19 +15,8 @@ app.listen(process.env.port || 9000, () => {
   }
 });
 
-app.use(
-  express.static("public", {
-    setHeaders: (res, path) => {
-      if (path.endsWith(".svg")) {
-        res.setHeader("Content-Type", "image/svg+xml");
-      }
-    },
-  }),
-);
-
 app.get("/", statsCard);
 app.get("/pin", repoCard);
 app.get("/top-langs", langCard);
 app.get("/wakatime", wakatimeCard);
 app.get("/gist", gistCard);
-app.get("/render-html", renderHtml);
