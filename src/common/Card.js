@@ -237,28 +237,6 @@ class Card {
               ? `* { animation-duration: 0s !important; animation-delay: 0s !important; }`
               : ""
           }
-              .react-fast-hooks-bg path,
-              .cli-gh-card-bg path {
-              animation:blink 2s infinite alternate ease-in-out !important;
-              }
-          @keyframes blink {
-            0% {
-              opacity: 1;
-            }
-            100% {
-              opacity: 0.7;
-            }
-          }
-            // for every path add random delay
-          .react-fast-hooks-bg path[data-idx="1"] , .cli-gh-card-bg path[data-idx="1"] {
-            animation-delay: 0.2s !important;
-          }
-          .react-fast-hooks-bg path[data-idx="2"] , .cli-gh-card-bg path[data-idx="2"] {
-            animation-delay: 0.4s !important;
-          }
-          .react-fast-hooks-bg path[data-idx="3"] , .cli-gh-card-bg path[data-idx="3"] {
-            animation-delay: 0.6s !important;
-          }
         </style>
 
         ${this.renderGradient()}
